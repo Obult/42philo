@@ -6,7 +6,7 @@
 /*   By: obult <obult@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 11:39:47 by obult         #+#    #+#                 */
-/*   Updated: 2022/02/09 15:22:56 by obult         ########   odam.nl         */
+/*   Updated: 2022/02/09 15:58:35 by obult         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*iam_philo(void *arg)
 	me = (t_philo *)arg;
 	me->times_eaten = 0;
 	if (me->id % 2 == 0)
-		usleep(250);
+		usleep(150);
 	while (me->gen->eats == 0 || me->times_eaten < me->gen->eats)
 	{
 		if (ph_eat(me) == 1)
@@ -35,6 +35,8 @@ void	*iam_philo(void *arg)
 		if (ph_think(me) == 1)
 			break ;
 		me->times_eaten++;
+		if (me->id == 1)
+			usleep(500);
 	}
 	if (me->times_eaten == me->gen->eats && me->gen->eats != 0)
 		me->last_eaten = -1;

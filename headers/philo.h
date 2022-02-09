@@ -6,7 +6,7 @@
 /*   By: obult <obult@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/19 14:18:48 by obult         #+#    #+#                 */
-/*   Updated: 2022/02/09 12:07:26 by obult         ########   odam.nl         */
+/*   Updated: 2022/02/09 15:49:43 by obult         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int     parse_input(t_general *data, char **argv, int argc);
 void	*start_sim(t_general *data);
 void	*iam_philo(void *arg);
 
-// void	great_sleep(int	mili);
-void	great_sleep(int	milli, t_philo *me);
+void	great_sleep(int	mili);
+// void	great_sleep(int	milli, t_philo *me);
 long long	elapsed_time(t_philo *me);
 long long	time_in_millis(void);
 
