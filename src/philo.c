@@ -6,17 +6,11 @@
 /*   By: obult <obult@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 11:39:47 by obult         #+#    #+#                 */
-/*   Updated: 2022/02/09 19:00:00 by obult         ########   odam.nl         */
+/*   Updated: 2022/02/09 20:23:22 by obult         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-// int	ph_death(t_philo *me)
-// {
-// 	printf("%i\n", pthread_mutex_lock(&me->gen->dead.mut));
-// 	return (1);
-// }
 
 void	*iam_philo(void *arg)
 {
@@ -41,6 +35,10 @@ void	*iam_philo(void *arg)
 			usleep(500);
 	}
 	if (me->times_eaten == me->gen->eats && me->gen->eats != 0)
+	{
+		pthread_mutex_lock(&me->gen->dead[(me->id - 1) / 10].mut);
 		me->last_eaten = -1;
+		pthread_mutex_unlock(&me->gen->dead[(me->id - 1) / 10].mut);
+	}
 	return (NULL);
 }

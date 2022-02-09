@@ -6,7 +6,7 @@
 #    By: obult <obult@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/01/19 12:29:04 by obult         #+#    #+#                  #
-#    Updated: 2022/02/06 17:00:01 by obult         ########   odam.nl          #
+#    Updated: 2022/02/09 20:11:33 by obult         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ OBJS		= $(addprefix obj/, ${OBJ})
 CC			= gcc
 RM			= rm -f
 HEADER		= -I headers/
-CFLAGS		= -Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS		= -Wall -Werror -Wextra #-g -fsanitize=thread
 
 all:		${NAME}
 

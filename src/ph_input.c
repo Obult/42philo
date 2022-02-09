@@ -6,7 +6,7 @@
 /*   By: obult <obult@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/27 16:57:13 by obult         #+#    #+#                 */
-/*   Updated: 2022/02/05 16:48:13 by obult         ########   odam.nl         */
+/*   Updated: 2022/02/09 20:21:49 by obult         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int     parse_input(t_general *data, char **argv, int argc)
     int error;
 
     error = 0;
+	data->eats = 0;
     data->philocount = ph_atoi(argv[1], &error);
     data->time_to_die = ph_atoi(argv[2], &error);
     data->time_to_eat = ph_atoi(argv[3], &error);
