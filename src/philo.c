@@ -6,7 +6,7 @@
 /*   By: obult <obult@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 11:39:47 by obult         #+#    #+#                 */
-/*   Updated: 2022/02/09 15:58:35 by obult         ########   odam.nl         */
+/*   Updated: 2022/02/09 19:00:00 by obult         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ void	*iam_philo(void *arg)
 			break ;
 		if (ph_think(me) == 1)
 			break ;
+		pthread_mutex_lock(&me->gen->times_eaten);
 		me->times_eaten++;
+		pthread_mutex_unlock(&me->gen->times_eaten);
 		if (me->id == 1)
 			usleep(500);
 	}

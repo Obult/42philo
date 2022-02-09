@@ -6,7 +6,7 @@
 /*   By: obult <obult@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/19 14:18:48 by obult         #+#    #+#                 */
-/*   Updated: 2022/02/09 15:49:43 by obult         ########   odam.nl         */
+/*   Updated: 2022/02/09 18:45:49 by obult         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_general
 	int				eats;
 
 	pthread_mutex_t	*forks;
+	pthread_mutex_t	times_eaten;
 	pthread_t		*philos;
 	t_philo			*ph_info;
 	t_dead			*dead;
@@ -60,7 +61,6 @@ void	*start_sim(t_general *data);
 void	*iam_philo(void *arg);
 
 void	great_sleep(int	mili);
-// void	great_sleep(int	milli, t_philo *me);
 long long	elapsed_time(t_philo *me);
 long long	time_in_millis(void);
 

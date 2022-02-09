@@ -6,7 +6,7 @@
 /*   By: obult <obult@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/27 13:32:22 by obult         #+#    #+#                 */
-/*   Updated: 2022/02/03 15:20:06 by obult         ########   odam.nl         */
+/*   Updated: 2022/02/09 18:36:44 by obult         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,13 @@ int     main(int argc, char **argv)
 	if (ph_initer(&data) == 1)		// first malloc
 		return (4);
 	start_sim(&data);
-	exit(0);
+	if (data.forks)
+		free(data.forks);
+	if (data.philos)
+		free(data.philos);
+	if (data.ph_info)
+		free(data.ph_info);
+	if (data.dead)
+		free(data.dead);
+	return (0);
 }
