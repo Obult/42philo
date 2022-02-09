@@ -6,7 +6,7 @@
 /*   By: obult <obult@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 11:39:47 by obult         #+#    #+#                 */
-/*   Updated: 2022/02/06 17:35:45 by obult         ########   odam.nl         */
+/*   Updated: 2022/02/09 14:32:36 by obult         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	*iam_philo(void *arg)
 			break ;
 		me->times_eaten++;
 	}
-	if (me->times_eaten == me->gen->eats && me->times_eaten != 0)
+	if (me->times_eaten == me->gen->eats && me->gen->eats != 0)
 		me->last_eaten = -1;
 	return (NULL);
 }

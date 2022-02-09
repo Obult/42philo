@@ -6,7 +6,7 @@
 /*   By: obult <obult@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 16:41:10 by obult         #+#    #+#                 */
-/*   Updated: 2022/02/06 17:35:46 by obult         ########   odam.nl         */
+/*   Updated: 2022/02/09 14:42:14 by obult         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		whale_loop(t_general *data)
 	while (i < data->philocount)
 	{
 		// pthread_mutex_lock();
-		if (data->eats != data->ph_info[i].times_eaten)
+		if (data->eats != data->ph_info[i].times_eaten || data->eats == 0)
 			return (0);
 		// pthread_mutex_unlock();
 		i++;
@@ -60,6 +60,7 @@ void	ph_holy_thread(t_general *data)
 		i = 0;
 		while (i < data->philocount)
 		{
+			// printf("last eaten %lld\n", data->ph_info[i].last_eaten);
 			if (time_in_millis() > data->ph_info[i].last_eaten + data->time_to_die && data->ph_info[i].last_eaten != -1)
 			{
 				// printf("dead philo alert! (%i)(%lld)\n", i + 1, elapsed_time(data->ph_info));
@@ -67,21 +68,13 @@ void	ph_holy_thread(t_general *data)
 				c = 1;
 				break ;
 			}
-			// pthread_mutex_lock(&data->dead[i / 10].mut);	// maybe does nothing vv
-			// if (data->dead[i / 10].check != 0)
-			// {
-
-			// 	someonedied_function(data, data->dead[i / 10].check);
-			// 	c = 1;
-			// 	break ;
-			// }
-			// else
-			// 	pthread_mutex_unlock(&data->dead[i / 10].mut);
 			i++;
 		}
 		if (c || whale_loop(data))
 			break ;
+		usleep(200);
 	}
+	printf("broken out\n");
 }
 
 void	*start_sim(t_general *data)

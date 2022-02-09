@@ -6,7 +6,7 @@
 /*   By: obult <obult@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/19 14:18:48 by obult         #+#    #+#                 */
-/*   Updated: 2022/02/05 16:12:24 by obult         ########   odam.nl         */
+/*   Updated: 2022/02/09 12:07:26 by obult         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ int	ph_sleep(t_philo *me);
 int	ph_think(t_philo *me);
 
 int	grab_fork(t_philo *me, int offset);
+int	grab_forks_plural(t_philo *me);
 
 #endif
