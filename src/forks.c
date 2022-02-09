@@ -6,7 +6,7 @@
 /*   By: obult <obult@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/04 16:38:20 by obult         #+#    #+#                 */
-/*   Updated: 2022/02/09 11:59:59 by obult         ########   odam.nl         */
+/*   Updated: 2022/02/09 15:22:33 by obult         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ int	grab_forks_plural(t_philo *me)
 	{
 		if (grab_fork(me, -1))
 			return(1);
+		if (me->gen->philocount == 1)
+		{
+			great_sleep(me->gen->time_to_die + 10, me);
+			pthread_mutex_unlock(&me->gen->forks[me->id % me->gen->philocount]);
+			return (1);
+		}
 		if (grab_fork(me, 0))
 		{
 			pthread_mutex_unlock(&me->gen->forks[me->id - 1]);

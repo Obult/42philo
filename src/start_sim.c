@@ -6,7 +6,7 @@
 /*   By: obult <obult@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 16:41:10 by obult         #+#    #+#                 */
-/*   Updated: 2022/02/09 14:42:14 by obult         ########   odam.nl         */
+/*   Updated: 2022/02/09 15:09:35 by obult         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		whale_loop(t_general *data)
 	while (i < data->philocount)
 	{
 		// pthread_mutex_lock();
-		if (data->eats != data->ph_info[i].times_eaten || data->eats == 0)
+		if (data->eats != data->ph_info[i].times_eaten || data->eats == 0) // controleren
 			return (0);
 		// pthread_mutex_unlock();
 		i++;
@@ -74,7 +74,6 @@ void	ph_holy_thread(t_general *data)
 			break ;
 		usleep(200);
 	}
-	printf("broken out\n");
 }
 
 void	*start_sim(t_general *data)
