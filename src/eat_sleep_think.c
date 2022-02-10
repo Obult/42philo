@@ -6,7 +6,7 @@
 /*   By: obult <obult@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/03 16:02:29 by obult         #+#    #+#                 */
-/*   Updated: 2022/02/09 20:23:14 by obult         ########   odam.nl         */
+/*   Updated: 2022/02/10 12:25:33 by obult         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	ph_death(t_philo *me)
 		return (1);
 	}
 	return (0);
-	
 }
 
 int	ph_print(t_philo *me, char *msg)
@@ -38,16 +37,15 @@ int	ph_print(t_philo *me, char *msg)
 	return (1);
 }
 
-
 int	ph_eat(t_philo *me)
 {
 	if (grab_forks_plural(me))
 		return (1);
 	if (ph_print(me, "is eating") == 0)
 	{
-		pthread_mutex_lock(&me->gen->dead[(me->id - 1) / 10].mut);		// this is a new lock
+		pthread_mutex_lock(&me->gen->dead[(me->id - 1) / 10].mut);
 		me->last_eaten = time_in_millis();
-		pthread_mutex_unlock(&me->gen->dead[(me->id - 1) / 10].mut);		// this too
+		pthread_mutex_unlock(&me->gen->dead[(me->id - 1) / 10].mut);
 		great_sleep(me->gen->time_to_eat);
 		pthread_mutex_unlock(&me->gen->forks[me->id - 1]);
 		pthread_mutex_unlock(&me->gen->forks[me->id % me->gen->philocount]);

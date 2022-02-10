@@ -6,7 +6,7 @@
 /*   By: obult <obult@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/27 16:29:18 by obult         #+#    #+#                 */
-/*   Updated: 2022/01/28 12:31:40 by obult         ########   odam.nl         */
+/*   Updated: 2022/02/10 12:32:33 by obult         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	charcheck(char tch, char *check)
 	return (charcheck(tch, check + 1));
 }
 
-static  int	ft_not_an_int(int base, int addition, int plus)
+static int	ft_not_an_int(int base, int addition, int plus)
 {
 	if (base < 214748364)
 		return (0);
@@ -34,10 +34,10 @@ static  int	ft_not_an_int(int base, int addition, int plus)
 	return (0);
 }
 
-static  int	fo_atoi_construction(const char *ptr, int *error, int plus)
+static int	fo_atoi_construction(const char *ptr, int *error, int plus)
 {
-	int		i;
-	int		result;
+	int	i;
+	int	result;
 
 	i = 0;
 	result = 0;
@@ -65,13 +65,13 @@ int	ph_atoi(const char *nptr, int *error)
 
 	i = 0;
 	plus = 1;
-    if (!nptr || *error)
-    {
+	if (!nptr || *error)
+	{
 		if (*error)
 			return (0);
-        *error= -42;
-        return (0);
-    }
+		*error = -42;
+		return (0);
+	}
 	while (charcheck(nptr[i], " \t\v\r\f\n"))
 		i++;
 	if (nptr[i] == '-')
