@@ -6,7 +6,7 @@
 /*   By: obult <obult@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/03 16:02:29 by obult         #+#    #+#                 */
-/*   Updated: 2022/02/10 12:25:33 by obult         ########   odam.nl         */
+/*   Updated: 2022/02/12 13:12:08 by obult         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ int	ph_death(t_philo *me)
 	mut_id = (me->id - 1) / 10;
 	pthread_mutex_lock(&me->gen->dead[mut_id].mut);
 	if (me->gen->dead[mut_id].check != 0)
+	{
+		pthread_mutex_unlock(&me->gen->dead[mut_id].mut);
+		return (1);
+	}
+	if (time_in_millis() > me->last_eaten + me->gen->time_to_die)
 	{
 		pthread_mutex_unlock(&me->gen->dead[mut_id].mut);
 		return (1);
